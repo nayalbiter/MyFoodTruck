@@ -18,10 +18,15 @@ async function initMap() {
         map: newMap,
         position: foodTruckLocation,
         title: "La chingona taqueria",
-        //icon: "C:/Users/carme/MyFoodTruck/food-truck.png"
+        content: foodTruckIcon
         
     });
 }
+
+let foodTruckIcon = document.createElement("img");
+foodTruckIcon.src = "food-truck.png";
+foodTruckIcon.style.width = "40px"; 
+foodTruckIcon.style.height = "40px";
 
 initMap();
 
