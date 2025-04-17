@@ -3,20 +3,30 @@ userLocationIcon.src = "user.png";
 userLocationIcon.style.width = "40px";
 userLocationIcon.style.height = "40px";
 
-let foodTruckIcon1 = document.createElement("img");
-foodTruckIcon1.src = "food-truck.png";
-foodTruckIcon1.style.width = "40px";
-foodTruckIcon1.style.height = "40px";
-
-let foodTruckIcon2 = document.createElement("img");
-foodTruckIcon2.src = "food-truck.png";
-foodTruckIcon2.style.width = "40px";
-foodTruckIcon2.style.height = "40px";
+let foodTruckIcon = document.createElement("img");
+foodTruckIcon.src = "food-truck.png";
+foodTruckIcon.style.width = "40px";
+foodTruckIcon.style.height = "40px";
 
 let newMap;
 
+foodTrucksList = [
+    {
+        title: "Bandido Mexican Grill",
+        position: { lat: 47.67601522248604, lng: -122.12250027702324 },
+        content: foodTruckIcon
+
+    },
+    {
+        title: "Los Chilangos",
+        position: { lat: 47.680114505286454, lng: -122.12521813498681 },
+        content: foodTruckIcon
+    }
+]
+
 //this function is used to create a map
 async function initMap() {
+
     let userLocation = { lat: 47.67731658055798, lng: -122.12261041757242 }
 
     //google libraries
@@ -29,7 +39,7 @@ async function initMap() {
     newMap = new Map(document.getElementById("map"), {
         zoom: 15,
         center: userLocation,
-        mapId: "user location",
+        mapId: "my map" //check**
     });
 
     //marker object for the user location:
@@ -41,22 +51,16 @@ async function initMap() {
     });
 
     //marker object for the food trucks:
-    foodTruck1 = { lat: 47.67601522248604, lng: -122.12250027702324 }
-    let foodTruckMarker1 = new AdvancedMarkerElement({
-        map: newMap,
-        position: foodTruck1,
-        title: "Bandido Mexican Grill",
-        content: foodTruckIcon1
+    foodTrucksList.forEach(truck => {
+        let sameFoodTruckIcon = foodTruckIcon.cloneNode(true); // to reuse the same DOM element (food truck icon each time)
+        new AdvancedMarkerElement({
+            map: newMap,
+            title: truck.title,
+            position: truck.position,
+            content: sameFoodTruckIcon
+        })
     });
 
-    //marker object for the food trucks:
-    foodTruck2 = { lat: 47.680114505286454, lng: -122.12521813498681 }
-    let foodTruckMarker2 = new AdvancedMarkerElement({
-        map: newMap,
-        position: foodTruck2,
-        title: "Los Chilangos",
-        content: foodTruckIcon2
-    });
 }
 
 initMap();
