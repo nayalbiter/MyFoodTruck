@@ -14,13 +14,10 @@ foodTrucksList = [
     {
         title: "Bandido Mexican Grill",
         position: { lat: 47.67601522248604, lng: -122.12250027702324 },
-        content: foodTruckIcon
-
     },
     {
         title: "Los Chilangos",
         position: { lat: 47.680114505286454, lng: -122.12521813498681 },
-        content: foodTruckIcon
     }
 ]
 
@@ -39,7 +36,7 @@ async function initMap() {
     newMap = new Map(document.getElementById("map"), {
         zoom: 15,
         center: userLocation,
-        mapId: "my map" //check**
+        mapId: "679343f29f0f9fcf" //
     });
 
     //marker object for the user location:
@@ -52,7 +49,7 @@ async function initMap() {
 
     //marker object for the food trucks:
     foodTrucksList.forEach(truck => {
-        let sameFoodTruckIcon = foodTruckIcon.cloneNode(true); // to reuse the same DOM element (food truck icon each time)
+        let sameFoodTruckIcon = foodTruckIcon.cloneNode(true); // to reuse the same DOM element (food truck icon)
         new AdvancedMarkerElement({
             map: newMap,
             title: truck.title,
