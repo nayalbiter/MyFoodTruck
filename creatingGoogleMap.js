@@ -49,7 +49,7 @@ async function initMap() {
 
     //marker object for the food trucks:
     foodTrucksList.forEach(truck => {
-        let sameFoodTruckIcon = foodTruckIcon.cloneNode(true); // to reuse the same DOM element (food truck icon)
+        let sameFoodTruckIcon = foodTruckIcon.cloneNode(true); 
         new AdvancedMarkerElement({
             map: newMap,
             title: truck.title,
