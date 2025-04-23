@@ -1,3 +1,6 @@
+let registerButton = document.getElementById("registerButton")
+registerButton.addEventListener("click", function () { window.location.href = "registerFoodTruckCompany.html"; });
+
 let userLocationIcon = document.createElement("img");
 userLocationIcon.src = "user.png";
 userLocationIcon.style.width = "40px";
@@ -49,7 +52,7 @@ async function initMap() {
 
     //marker object for the food trucks:
     foodTrucksList.forEach(truck => {
-        let sameFoodTruckIcon = foodTruckIcon.cloneNode(true); 
+        let sameFoodTruckIcon = foodTruckIcon.cloneNode(true);
         new AdvancedMarkerElement({
             map: newMap,
             title: truck.title,

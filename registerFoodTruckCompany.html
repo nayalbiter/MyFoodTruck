@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Register Food Truck Company</title>
+    <link rel="stylesheet" href="style.css">
+    <!--bootstrap link:-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <h1 id="title"> Register your food truck here:</h1>
+
+    <form>
+        <div class="mb-3">
+            <label for="companyName" class="form-label">Company Name:</label>
+            <input type="text" class="form-control" id="companyName" name="company" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="foodDescription" class="form-label">Add a description of your food and other products:</label>
+            <input type="text" class="form-control" id="foodDescription" name="foodTruckDescription" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="websiteLink" class="form-label">Add your website link here:</label>
+            <input type="url" class="form-control" id="websiteLink" name="foodTruckWebsite">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address:</label>
+            <input type="email" class="form-control" id="email" name="companyEmail" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" name="companyPassword" required>
+        </div>
+
+        <button id="createCompanyAccount" type="submit" class="btn btn-primary">Create Account</button>
+    </form>
+
+    <br>
+
+    <div>
+        <h3 id="loginOption"> Or Log In to modify/add more food trucks</h3>
+    </div> <!--to do: add the log in click here-->
+    <br>
+
+    <div>
+        <button id="backToMap"> Back to map</button>
+        
+    </div>
+
+    <script src="registerFoodCompany.js"></script>
+
+    <!--bootstrap link for js:-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
+</body>
+
+<footer>
+    <div id="websiteCreation">
+        <br>
+        <span>Kirkland, WA © 2025 My Food Truck Tracker </span>
+        <br>
+        <br>
+        <span>Credits:</span>
+        <br>
+        <span>Food truck icons created by amonrat rungreangfangsai - Flaticon</span>
+        <br>
+        <span>Profile picture icons created by Vector Bazar - Flaticon</span>
+    </div>
+
+</footer>
+
+</html>
