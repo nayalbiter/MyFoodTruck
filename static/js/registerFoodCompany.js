@@ -1,5 +1,4 @@
-let createCompanyAccount = document.getElementById("createCompanyAccount")
-createCompanyAccount.addEventListener("click", function () { window.location.href = "foodCompanyPage.html"; });
+
 
 
 let backToMapButton = document.getElementById("backToMap")
