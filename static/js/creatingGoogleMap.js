@@ -1,13 +1,13 @@
 let registerButton = document.getElementById("registerButton")
-registerButton.addEventListener("click", function () { window.location.href = "pages/registerFoodTruckCompany.html"; });
+registerButton.addEventListener("click", function () { window.location.href = "/registerFoodCompanyPage"; });
 
 let userLocationIcon = document.createElement("img");
-userLocationIcon.src = "images/user.png";
+userLocationIcon.src = "static/images/user.png";
 userLocationIcon.style.width = "40px";
 userLocationIcon.style.height = "40px";
 
 let foodTruckIcon = document.createElement("img");
-foodTruckIcon.src = "images/food-truck.png";
+foodTruckIcon.src = "static/images/food-truck.png";
 foodTruckIcon.style.width = "40px";
 foodTruckIcon.style.height = "40px";
 
