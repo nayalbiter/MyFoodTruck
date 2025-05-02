@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from werkzeug.security import generate_password_hash
 from utils.databaseInfo import connectToDatabase
 from utils.createCompanyForm import createCompany
+from utils.addNewFoodTruckForm import addNewFoodTruck
 
 
 app = Flask(__name__)
@@ -23,7 +24,14 @@ def createCompanyForm():
     return createCompany()
 
 #add a new food truck form
+@app.route('/addFoodTruckDetails')
+def go2FoodTruckDetailsForm():
+    return render_template("addNewFoodTruckForm.html")
 
+#create the food truck form
+@app.route('/addNewFoodTruck', methods=['POST'])
+def createFoodTruckDetailsForm():
+    return addNewFoodTruck()
 
 
 if __name__ == '__main__':
