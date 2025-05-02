@@ -1,10 +1,11 @@
+DROP DATABASE IF EXISTS Food_Trucks_Database;
 create database Food_Trucks_Database;
 use Food_Trucks_Database;
 
-/* company table */   		/* to do: add the unique attribute to the company name*/
+/* company table */ 
 create table food_companies (
 	company_Id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	company_name VARCHAR(255) NOT NULL,     
+	company_name VARCHAR(255) NOT NULL UNIQUE,     
 	food_description TEXT NOT NULL,
 	business_website VARCHAR(255),
 	email VARCHAR(255) NOT NULL, 
