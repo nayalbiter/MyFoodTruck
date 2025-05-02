@@ -25,22 +25,22 @@
         </a>
     </div>
 
-    <h1 id="title"> Welcome "Los Chilangos" Company</h1>
+    <h1 id="title"> Welcome "{{ company.company_name }}" Company </h1>
 
     <div class="table-responsive">
         <table class="table table-bordered">
             <tbody>
                 <tr>
                     <th scope="row">Food Description:</th>
-                    <td>Mexican Food</td>
+                    <td>{{ company.food_description }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Website:</th>
-                    <td>https://www.loschilangos.com/</td>
+                    <td>{{ company.business_website }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Email:</th>
-                    <td>example@gmail.com</td>
+                    <td>{{ company.email }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Password:</th>
