@@ -12,26 +12,28 @@ def createCompany():
     secure_password = generate_password_hash(password)
 
     insertCompany_query = """
-    INSERT INTO food_companies (company_name, food_description, business_website, email, password)
-    VALUES (%s, %s, %s, %s, %s)
+    insert into food_companies (company_name, food_description, business_website, email, password)
+    values (%s, %s, %s, %s, %s)
     """
     try:
         foodTruckDb = connectToDatabase()
         cursor = foodTruckDb.cursor(dictionary=True)
         cursor.execute(insertCompany_query, (company_name, food_description, business_website, company_email,secure_password))
         foodTruckDb.commit()
+        
+        companyID = cursor.lastrowid
 
         #show the information of the company in the food Company main page
         cursor.execute("""
-            SELECT company_name, food_description, business_website, email 
-            FROM food_companies 
-            WHERE company_Id = LAST_INSERT_ID()
-        """)
+            select company_name, food_description, business_website, email 
+            from food_companies 
+            where company_Id = %s
+        """, (companyID,))
         company = cursor.fetchone()
         
     except mysql.connector.Error as err:
         print(f"Database error: {err}")
-        return f"An error happened while processing your request: {err}", 500  #server error
+        return f"An error happened while processing your request: {err}", 500  # error en el servidor
     
     finally:
         cursor.close()

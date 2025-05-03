@@ -70,8 +70,10 @@
                 </tr>
             </thead>
             <tbody>
+                {% if food_trucks %}
+                {% for truck in food_trucks %}
                 <tr>
-                    <td>  </td>
+                    <td>{{ truck.food_truck_name }}
                     <td style="width: 300px;">
                         <a href="" class="btn btn-sm btn-primary">
                             <i class="bi bi-pencil"></i> Edit <!--To do-->
@@ -85,6 +87,12 @@
                         </form>
                     </td>
                 </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="3" class="text-center"> You have not added a food truck yet!</td>
+                </tr>
+            {% endif %}
             </tbody>
         </table>
     </div>
