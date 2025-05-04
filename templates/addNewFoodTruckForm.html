@@ -19,7 +19,7 @@
     <form form action="/addNewFoodTruck" method="post" id="newFoodTruckForm" class="p-4 border rounded shadow-sm mt-4">
         <h1 class="mb-4 text-primary">Add a new food truck:</h1>
 
-        <input type="hidden" name="companyID" value="{{ company.companyID }}">
+        <input type="hidden" name="company_Id" value="{{ company.company_Id }}"> <!--fix this one-->
 
         <div class="mb-3">
             <label for="foodTruckname" class="form-label">Food Truck Name:</label>
@@ -48,7 +48,6 @@
         
     </form>
 
-    <script src="../static/js/addNewFoodTruckForm.js"></script>
 
     <!--bootstrap link for js:-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"

@@ -1,5 +1,5 @@
 let registerButton = document.getElementById("registerButton")
-registerButton.addEventListener("click", function () { window.location.href = "/registerFoodCompanyPage"; });
+registerButton.addEventListener("click", function () { window.location.href = "/registerFoodCompany"; });
 
 let userLocationIcon = document.createElement("img");
 userLocationIcon.src = "static/images/user.png";

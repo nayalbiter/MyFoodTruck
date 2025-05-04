@@ -15,20 +15,23 @@ def index():
     return render_template("index.html")
 
 # Register Food Truck company
-@app.route('/registerFoodCompanyPage')
+@app.route('/registerFoodCompany')
 def go2RegisterCompany():
-    return render_template("registerFoodTruckCompany.html")
+    return render_template("registerFTCompanyForm.html")
 
 
 # create company's form
-@app.route('/createCompany', methods=['POST'])
+@app.route('/getCompanyInformation', methods=['POST'])
 def createCompanyForm():
     return createCompany()
 
-#add a new food truck form
-@app.route('/addFoodTruckDetails')
-def go2FoodTruckDetailsForm():
-    return getCompanyIdForFoodTRuckForm() #fix this
+
+#Note: this is the code I did this week:-----------------------------------------------
+
+#add a new food truck form   
+@app.route('/getCompanyId/<int:company_id>')
+def getCompanyId():
+    return getCompanyIdForFoodTRuckForm() #fix this this should include the company_id or at least get it
 
 #create the food truck form
 @app.route('/addNewFoodTruck', methods=['POST'])

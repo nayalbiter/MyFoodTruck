@@ -24,4 +24,4 @@ def getCompanyIdForFoodTRuckForm():
     if not company:
         return "Company not found", 404
 
-    return render_template("addNewFoodTruckForm.html", company=company)
+    return render_template("foodCompanyPage.html", company=company)
