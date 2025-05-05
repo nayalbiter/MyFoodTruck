@@ -2,9 +2,8 @@ from flask import Flask, render_template, request
 from werkzeug.security import generate_password_hash
 from utils.databaseInfo import connectToDatabase
 from utils.createCompanyForm import createCompany
-from utils.addNewFoodTruckForm import addNewFoodTruck
-from utils.showCompanyInformation import showCompanyInfo
-from utils.getCompanyId import getCompanyIdForFoodTRuckForm
+from utils.addNewFoodTruckForm import insertNewFoodTruck
+
 
 
 app = Flask(__name__)
@@ -28,21 +27,17 @@ def createCompanyForm():
 
 #Note: this is the code I did this week:-----------------------------------------------
 
-#add a new food truck form   
-@app.route('/getCompanyId/<int:company_id>')
-def getCompanyId():
-    return getCompanyIdForFoodTRuckForm() #fix this this should include the company_id or at least get it
+#show the food truck form   
+@app.route('/go2FoodTruckForm')
+def go2FoodTruckForm():
+    company_id = request.args.get("company_id")
+    print(company_id)
+    return render_template("addNewFoodTruckForm.html", company_id=company_id)
 
-#create the food truck form
+#add a new food truck to the database
 @app.route('/addNewFoodTruck', methods=['POST'])
-def createFoodTruckDetailsForm():
-    return addNewFoodTruck()
-
-#show company main page
-@app.route('/company/<int:company_id>')
-def showCompanyPage(company_id):
-    return showCompanyInfo(company_id)
-
+def addNewFoodTruck():
+    return insertNewFoodTruck()
 
 if __name__ == '__main__':
     app.run(debug=True)

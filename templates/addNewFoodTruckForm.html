@@ -19,7 +19,8 @@
     <form form action="/addNewFoodTruck" method="post" id="newFoodTruckForm" class="p-4 border rounded shadow-sm mt-4">
         <h1 class="mb-4 text-primary">Add a new food truck:</h1>
 
-        <input type="hidden" name="company_Id" value="{{ company.company_Id }}"> <!--fix this one-->
+        <input type="hidden" name="company_id" value="{{ company_id }}">
+
 
         <div class="mb-3">
             <label for="foodTruckname" class="form-label">Food Truck Name:</label>

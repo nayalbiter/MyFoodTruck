@@ -24,11 +24,7 @@ def createCompany():
         companyID = cursor.lastrowid
 
         #show the information of the company in the food Company main page
-        cursor.execute("""
-            select company_name, food_description, business_website, email 
-            from food_companies 
-            where company_Id = %s
-        """, (companyID,))
+        cursor.execute("SELECT * FROM food_companies WHERE company_id = %s", (companyID,))
         company = cursor.fetchone()
         
     except mysql.connector.Error as err:
@@ -39,5 +35,6 @@ def createCompany():
         cursor.close()
         foodTruckDb.close()
         
-    print(f"Company details fetched: {company}")
+    print(f"Company details: {company}")
+    
     return render_template("foodCompanyPage.html", company=company)

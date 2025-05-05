@@ -59,8 +59,10 @@
     <br>
 
     <div>
-        <button id="addNewFoodTruck"  onclick="window.location.href = "/addFoodTruckDetails?company_id=1";"> Add New Food Truck </button>
-    </div> <!--Fix this-->
+        <a href="{{ url_for('go2FoodTruckForm', company_id=company.company_id) }}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Add New Food Truck
+        </a>
+    </div> 
 
     
 
