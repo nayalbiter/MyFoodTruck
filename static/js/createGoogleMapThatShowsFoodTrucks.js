@@ -105,7 +105,7 @@ async function geoCodingAddress(foodTruckName, foodTruckAddress) {
 
 
 initMap().then(() => {
-    geoCodingAddress(foodTruckAddress, foodTruckName);
+    geoCodingAddress(foodTruckName, foodTruckAddress);
 });
 
 
