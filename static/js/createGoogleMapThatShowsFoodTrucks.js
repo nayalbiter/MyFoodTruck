@@ -13,17 +13,31 @@ foodTruckIcon.style.height = "40px";
 
 let newMap;
 let geocoder;
+let foodTrucksList;
 
-foodTrucksList = [
-    {
-        title: "Bandido Mexican Grill",
-        position: { lat: 47.67601522248604, lng: -122.12250027702324 },
-    },
-    {
-        title: "Los Chilangos",
-        position: { lat: 47.680114505286454, lng: -122.12521813498681 },
-    }
-] //to do: connect to database to bring food trucks addresses and names
+//get food trucks from database
+fetch('/fetchFoodTrucks')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        return response.json();
+    })
+    .then(foodTrucksList => {
+        console.log("hahaha si funciona");
+        //console.log(foodTrucksList);
+        foodTrucksList.forEach(truck => {
+            geoCodingAddress(truck.food_truck_name, truck.full_address)
+            console.log(truck.food_truck_name);
+            console.log(truck.full_address);
+        });
+    })
+    .catch(error => {
+        console.error("Error fetching the JSON file:", error);
+    });
+
+
 
 //create a map
 async function initMap() {
@@ -42,7 +56,7 @@ async function initMap() {
 
     //Create map object:
     newMap = new Map(document.getElementById("map"), {
-        zoom: 15,
+        zoom: 12,
         center: userLocation,
         mapId: "679343f29f0f9fcf" //
     });
@@ -56,15 +70,15 @@ async function initMap() {
     });
 
     //marker object for the food trucks:
-    foodTrucksList.forEach(truck => {
-        let sameFoodTruckIcon = foodTruckIcon.cloneNode(true);
-        new AdvancedMarkerElement({
-            map: newMap,
-            title: truck.title,
-            position: truck.position,
-            content: sameFoodTruckIcon
-        })
-    });
+    // foodTrucksList.forEach(truck => {
+    //     let sameFoodTruckIcon = foodTruckIcon.cloneNode(true);
+    //     new AdvancedMarkerElement({
+    //         map: newMap,
+    //         title: truck.title,
+    //         position: truck.position,
+    //         content: sameFoodTruckIcon
+    //     })
+    // });
 
 }
 
@@ -88,14 +102,13 @@ async function geoCodingAddress(foodTruckName, foodTruckAddress) {
         if (status === 'OK') {
             let sameFoodTruckIcon = foodTruckIcon.cloneNode(true);
             new AdvancedMarkerElement({
-
                 map: newMap,
                 title: foodTruckName,
                 position: results[0].geometry.location,
                 content: sameFoodTruckIcon
             });
-            console.log(results[0]);
-            console.log(results);
+            //console.log(results[0]);
+            //console.log(results);
 
         } else {
             alert('something is wrong with the geocode function: ' + status);

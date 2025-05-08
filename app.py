@@ -3,8 +3,7 @@ from werkzeug.security import generate_password_hash
 from utils.databaseInfo import connectToDatabase
 from utils.createCompanyForm import createCompany
 from utils.addNewFoodTruckForm import insertNewFoodTruck
-
-
+from utils.getFoodTrucksFromDataBase import getFoodTrucksFromDB
 
 app = Flask(__name__)
 
@@ -38,6 +37,11 @@ def go2FoodTruckForm():
 @app.route('/addNewFoodTruck', methods=['POST'])
 def addNewFoodTruck():
     return insertNewFoodTruck()
+
+#get the food trucks from the database
+@app.route('/fetchFoodTrucks')
+def getFoodTrucks():
+    return getFoodTrucksFromDB()
 
 
 if __name__ == '__main__':
