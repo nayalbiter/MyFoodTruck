@@ -28,7 +28,7 @@ def insertNewFoodTruck():
     
     except mysql.connector.Error as err:
         print(f"Database error: {err}")
-        return f"An error happened while processing your request: {err}", 500 
+        return f"An error happened while processing your request: {err}"
     
     finally:
         cursor.close()

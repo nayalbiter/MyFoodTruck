@@ -29,7 +29,7 @@ def createCompany():
         
     except mysql.connector.Error as err:
         print(f"Database error: {err}")
-        return f"An error happened while processing your request: {err}", 500  # error en el servidor
+        return f"An error happened while processing your request: {err}"  # error en el servidor
     
     finally:
         cursor.close()

@@ -11,7 +11,7 @@ foodTruckIcon.src = "static/images/food-truck.png";
 foodTruckIcon.style.width = "40px";
 foodTruckIcon.style.height = "40px";
 
-let newMap;
+let mapForFT;
 let geocoder;
 let foodTrucksList;
 
@@ -21,16 +21,15 @@ fetch('/fetchFoodTrucks')
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
-
         return response.json();
     })
     .then(foodTrucksList => {
-        console.log("hahaha si funciona");
-        //console.log(foodTrucksList);
+        //console.log("hahaha si funciona");
+
         foodTrucksList.forEach(truck => {
             geoCodingAddress(truck.food_truck_name, truck.full_address)
-            console.log(truck.food_truck_name);
-            console.log(truck.full_address);
+            //console.log(truck.food_truck_name);
+            //console.log(truck.full_address);
         });
     })
     .catch(error => {
@@ -55,7 +54,7 @@ async function initMap() {
     geocoder = new google.maps.Geocoder();
 
     //Create map object:
-    newMap = new Map(document.getElementById("map"), {
+    mapForFT = new Map(document.getElementById("map"), {
         zoom: 12,
         center: userLocation,
         mapId: "679343f29f0f9fcf" //
@@ -63,28 +62,15 @@ async function initMap() {
 
     //marker object for the user location:
     let userMarker = new AdvancedMarkerElement({
-        map: newMap,
+        map: mapForFT,
         position: userLocation,
         title: "My location",
         content: userLocationIcon
     });
 
-    //marker object for the food trucks:
-    // foodTrucksList.forEach(truck => {
-    //     let sameFoodTruckIcon = foodTruckIcon.cloneNode(true);
-    //     new AdvancedMarkerElement({
-    //         map: newMap,
-    //         title: truck.title,
-    //         position: truck.position,
-    //         content: sameFoodTruckIcon
-    //     })
-    // });
-
 }
 
 //code for geocoding---------------!
-let foodTruckName = "La Chingona Taqueria Seattle";
-let foodTruckAddress = "2940 SW Avalon Way, Seattle, WA 98126";
 
 //geocoding function hard coded right now
 async function geoCodingAddress(foodTruckName, foodTruckAddress) {
@@ -102,7 +88,7 @@ async function geoCodingAddress(foodTruckName, foodTruckAddress) {
         if (status === 'OK') {
             let sameFoodTruckIcon = foodTruckIcon.cloneNode(true);
             new AdvancedMarkerElement({
-                map: newMap,
+                map: mapForFT,
                 title: foodTruckName,
                 position: results[0].geometry.location,
                 content: sameFoodTruckIcon
@@ -115,7 +101,6 @@ async function geoCodingAddress(foodTruckName, foodTruckAddress) {
         }
     });
 }
-
 
 initMap().then(() => {
     geoCodingAddress(foodTruckName, foodTruckAddress);
