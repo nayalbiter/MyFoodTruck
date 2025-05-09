@@ -28,8 +28,8 @@ fetch('/fetchFoodTrucks')
 
         foodTrucksList.forEach(truck => {
             geoCodingAddress(truck.food_truck_name, truck.full_address)
-            //console.log(truck.food_truck_name);
-            //console.log(truck.full_address);
+            console.log(truck.food_truck_name);
+            console.log(truck.full_address);
         });
     })
     .catch(error => {
@@ -70,9 +70,7 @@ async function initMap() {
 
 }
 
-//code for geocoding---------------!
-
-//geocoding function hard coded right now
+//geocoding function
 async function geoCodingAddress(foodTruckName, foodTruckAddress) {
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 

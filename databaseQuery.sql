@@ -4,7 +4,7 @@ use Food_Trucks_Database;
 
 /* company table */ 
 create table food_companies (
-	company_Id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	company_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	company_name VARCHAR(255) NOT NULL UNIQUE,     
 	food_description TEXT NOT NULL,
 	business_website VARCHAR(255),
@@ -18,8 +18,16 @@ CREATE TABLE food_trucks (
     full_address TEXT NOT NULL,
     phone_number VARCHAR(20),
     business_hours VARCHAR(100),
-    company_Id INT NOT NULL,
-    FOREIGN KEY (company_Id) REFERENCES food_companies(company_Id)
+    company_id INT NOT NULL,
+    FOREIGN KEY (company_id) REFERENCES food_companies(company_id) ON DELETE CASCADE
 );
 
 select * from food_companies;
+select * from food_trucks;
+
+delete from food_trucks where food_truck_id = 2;
+
+delete from food_companies where company_id = 2;
+
+
+
