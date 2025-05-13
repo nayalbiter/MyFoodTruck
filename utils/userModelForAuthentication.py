@@ -3,9 +3,11 @@ from werkzeug.security import check_password_hash
 from utils.databaseInfo import connectToDatabase
 
 class User(UserMixin):
-    def __init__(self, company_id, company_name, company_email, password):
+    def __init__(self, company_id, company_name, food_description, business_website, company_email, password):
         self.id = company_id
         self.company_name = company_name
+        self.food_description = food_description
+        self.business_website = business_website
         self.company_email = company_email
         self.password = password
 
@@ -18,7 +20,7 @@ class User(UserMixin):
         dbConnection.close()
 
         if company:
-            return User(company['company_id'], company['company_name'], company['email'], company['password'])
+            return User(company['company_id'], company['company_name'], company['food_description'], company['business_website'], company['email'], company['password'])
         return None
 
     @staticmethod
@@ -30,7 +32,7 @@ class User(UserMixin):
         dbConnection.close()
 
         if company:
-            return User(company['company_id'], company['company_name'], company['email'], company['password'])
+            return User(company['company_id'], company['company_name'], company['food_description'], company['business_website'], company['email'], company['password'])
         return None
 
     def checkPassword(self, userPassword):

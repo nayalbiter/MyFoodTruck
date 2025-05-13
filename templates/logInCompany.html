@@ -18,6 +18,12 @@
 
     <h1 id="title"> Log In here:</h1>
 
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
     <form action="/logInCompany" method="POST">
 
         <div class="mb-3">

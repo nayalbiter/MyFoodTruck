@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request
+from flask import request, redirect, url_for
+from flask_login import login_user
 from werkzeug.security import generate_password_hash
 from utils.databaseInfo import connectToDatabase
+from utils.userModelForAuthentication import User
 import mysql.connector
 
 def createCompany():
@@ -27,6 +29,14 @@ def createCompany():
         cursor.execute("SELECT * FROM food_companies WHERE company_id = %s", (companyID,))
         company = cursor.fetchone()
         
+        print(f"Company details: {company}")
+        
+        #log in after registration
+        if company:
+            userForCompany = User (company['company_id'], company['company_name'], company['food_description'], company['business_website'], company['email'], company['password'])
+            login_user(userForCompany)
+            return redirect(url_for("go2CompanyMainPageAfterLogIn"))
+
     except mysql.connector.Error as err:
         print(f"Database error: {err}")
         return f"An error happened while processing your request: {err}"  # error en el servidor
@@ -34,7 +44,3 @@ def createCompany():
     finally:
         cursor.close()
         foodTruckDb.close()
-        
-    print(f"Company details: {company}")
-    
-    return render_template("foodCompanyPage.html", company=company)

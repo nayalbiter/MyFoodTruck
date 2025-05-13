@@ -1,8 +1,9 @@
 from flask import Flask, redirect, render_template, request, url_for, session
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from flask_login import LoginManager, login_required, logout_user, current_user
 from utils.createCompanyForm import createCompany
 from utils.addNewFoodTruckForm import insertNewFoodTruck
 from utils.getFoodTrucksFromDataBase import getFoodTrucksFromDB
+from utils.logInFunction import logInForCompany
 from utils.userModelForAuthentication import User
 
 
@@ -24,6 +25,16 @@ def load_company(company_id):
 def index():
     return render_template("index.html")
 
+# Register Food Truck company
+@app.route('/registerFoodCompany')
+def go2RegisterCompany():
+    return render_template("registerFTCompanyForm.html")
+
+# form to create a new company and then log in into the company main page   --------------------->fixing this one!!!
+@app.route('/getCompanyInformation', methods=['POST'])
+def registerANewCompanyForm():
+    return createCompany()
+
 # log in page for food trucks company
 @app.route('/logInPage')
 def go2LogInPage():
@@ -32,24 +43,8 @@ def go2LogInPage():
 #log in form
 @app.route('/logInCompany', methods= ['POST'] )
 def logInCompany ():
-    companyEmail = request.form['companyEmail']
-    password = request.form['companyPassword']
-    
-    userForCompany = User.getCompanyEmail(companyEmail)
-    
-    if not userForCompany:
-        print("Company not found for the email:", companyEmail)
+    return logInForCompany()
 
-    if userForCompany and userForCompany.checkPassword(password):
-        print("Accessed")
-        login_user(userForCompany)
-        return redirect (url_for("go2CompanyMainPageAfterLogIn"))
-    else:
-        print("NOT Accessed")
-        #print("Invalid username or password, try again!")
-        return render_template("logInCompany.html")
-        
-    
 #company main page route
 @app.route('/foodTruckCompanyMainPage')
 @login_required
@@ -59,15 +54,6 @@ def go2CompanyMainPageAfterLogIn():
     return render_template("foodCompanyPage.html", company = current_user )
 
 
-# Register Food Truck company
-@app.route('/registerFoodCompany')
-def go2RegisterCompany():
-    return render_template("registerFTCompanyForm.html")
-
-# form to create a new company and then log in into the company main page  fixing this one!!!
-@app.route('/getCompanyInformation', methods=['POST'])
-def registerANewCompanyForm():
-    return createCompany()
 
 #show the food truck form   
 @app.route('/go2FoodTruckForm')
@@ -87,7 +73,6 @@ def addNewFoodTruck():
 def logout():
     print("Logging out:", current_user.company_email)
     logout_user()
-    session.clear()
     return redirect (url_for("index"))
 
 #get the food trucks from the database

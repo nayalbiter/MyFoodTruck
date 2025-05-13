@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for
+#from flask import Flask, redirect, render_template, request, url_for
 from utils.databaseInfo import connectToDatabase
 import mysql.connector
 
