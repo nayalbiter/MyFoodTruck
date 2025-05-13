@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for
+from flask import flash, render_template, request, redirect, url_for
 from flask_login import login_user
 from werkzeug.security import generate_password_hash
 from utils.databaseInfo import connectToDatabase
@@ -38,8 +38,13 @@ def createCompany():
             return redirect(url_for("go2CompanyMainPageAfterLogIn"))
 
     except mysql.connector.Error as err:
-        print(f"Database error: {err}")
-        return f"An error happened while processing your request: {err}"  # error en el servidor
+        if err.errno == 1062:
+            duplicateField = "company name" if "company_name" in str(err.msg) else "email"
+            flash(f"There is already a company with this {duplicateField}. Please use a different {duplicateField}.", "danger")
+            return render_template("registerFTCompanyForm.html")
+        else:
+            print(f"Database error: {err}")
+            return f"An error happened while processing your request: {err}"  # error en el servidor
     
     finally:
         cursor.close()
