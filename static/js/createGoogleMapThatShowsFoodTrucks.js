@@ -1,5 +1,8 @@
-let registerButton = document.getElementById("registerButton")
+let registerButton = document.getElementById("registerButton");
 registerButton.addEventListener("click", function () { window.location.href = "/registerFoodCompany"; });
+
+let logInForCompany = document.getElementById("logInButton");
+logInForCompany.addEventListener("click", function() { window.location.href = "/logInPage";});
 
 let userLocationIcon = document.createElement("img");
 userLocationIcon.src = "static/images/user.png";

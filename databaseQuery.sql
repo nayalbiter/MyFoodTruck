@@ -1,14 +1,13 @@
 DROP DATABASE IF EXISTS Food_Trucks_Database;
 create database Food_Trucks_Database;
 use Food_Trucks_Database;
-
 /* company table */ 
 create table food_companies (
 	company_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	company_name VARCHAR(255) NOT NULL UNIQUE,     
 	food_description TEXT NOT NULL,
 	business_website VARCHAR(255),
-	email VARCHAR(255) NOT NULL, 
+	email VARCHAR(255) NOT NULL UNIQUE,
 	password VARCHAR(255) NOT NULL
 );
 /*food trucks table */
@@ -24,10 +23,6 @@ CREATE TABLE food_trucks (
 
 select * from food_companies;
 select * from food_trucks;
-
-delete from food_trucks where food_truck_id = 2;
-
-delete from food_companies where company_id = 2;
 
 
 
