@@ -30,7 +30,7 @@ def index():
 def go2RegisterCompany():
     return render_template("registerFTCompanyForm.html")
 
-# form to create a new company and then log in into the company main page   --------------------->fixing this one!!!
+# form to create a new company and then log in into the company main page 
 @app.route('/getCompanyInformation', methods=['POST'])
 def registerANewCompanyForm():
     return createCompany()
