@@ -4,6 +4,7 @@ from utils.createCompanyForm import createCompany
 from utils.addNewFoodTruckForm import insertNewFoodTruck
 from utils.getFoodTrucksFromDataBase import getFoodTrucksFromDB
 from utils.logInFunction import logInForCompany
+from utils.showCompanyMainPage import getCompanyMainPage
 from utils.userModelForAuthentication import User
 
 
@@ -14,7 +15,7 @@ app.config["SECRET_KEY"] = "key1Used.For9Authentication,Is!Hard#Coded*For%Testin
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "go2LogInPage"
-        
+
 #get the company by id
 @login_manager.user_loader
 def load_company(company_id):
@@ -24,6 +25,11 @@ def load_company(company_id):
 @app.route('/')
 def index():
     return render_template("index.html")
+
+#get the food trucks from the database
+@app.route('/fetchFoodTrucks')
+def getFoodTrucks():
+    return getFoodTrucksFromDB()
 
 # Register Food Truck company
 @app.route('/registerFoodCompany')
@@ -49,12 +55,9 @@ def logInCompany ():
 @app.route('/foodTruckCompanyMainPage')
 @login_required
 def go2CompanyMainPageAfterLogIn():
-    print("Authenticated?", current_user.is_authenticated)
-    print("Company email:", current_user.company_email)
-    return render_template("foodCompanyPage.html", company = current_user )
+    return getCompanyMainPage()
 
-
-#show the food truck form  fixing this part now -----------------------------!!! 
+#show the food truck form
 @app.route('/go2FoodTruckForm')
 @login_required
 def go2FoodTruckForm():
@@ -74,10 +77,6 @@ def logout():
     logout_user()
     return redirect (url_for("index"))
 
-#get the food trucks from the database
-@app.route('/fetchFoodTrucks')
-def getFoodTrucks():
-    return getFoodTrucksFromDB()
 
 if __name__ == '__main__':
     app.run(debug=True)
