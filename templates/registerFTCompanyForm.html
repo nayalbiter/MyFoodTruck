@@ -1,99 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Food Truck Company</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <!-- bootstrap link: -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Register Food Truck Company</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-    <!--bootstrap link:-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-
-</head>
-
-<body>
-
-    <h1 id="title"> Register your food truck company here:</h1>
+  <body>
+    <h1 id="title">Register your food truck company here:</h1>
 
     <div class="container mt-3">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+      {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
     </div>
 
     <form action="/getCompanyInformation" method="post">
-        <div class="mb-3">
-            <label for="companyName" class="form-label">Company Name:</label>
-            <input type="text" class="form-control" id="companyName" name="company" required>
-        </div>
+      <div class="mb-3">
+        <label for="companyName" class="form-label">Company Name:</label>
+        <input type="text" class="form-control" id="companyName" name="company" required />
+      </div>
 
-        <div class="mb-3">
-            <label for="foodDescription" class="form-label">Add a description of your food and other products:</label>
-            <input type="text" class="form-control" id="foodDescription" name="foodTruckDescription" required>
-        </div>
+      <div class="mb-3">
+        <label for="foodDescription" class="form-label">Add a description of your food and other products:</label>
+        <input type="text" class="form-control" id="foodDescription" name="foodTruckDescription" required />
+      </div>
 
-        <div class="mb-3">
-            <label for="websiteLink" class="form-label">Add your website link here:</label>
-            <input type="url" class="form-control" id="websiteLink" name="foodTruckWebsite">
-        </div>
+      <div class="mb-3">
+        <label for="websiteLink" class="form-label">Add your website link here:</label>
+        <input type="url" class="form-control" id="websiteLink" name="foodTruckWebsite" />
+      </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address:</label>
-            <input type="email" class="form-control" id="email" name="companyEmail" required>
-        </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address:</label>
+        <input type="email" class="form-control" id="email" name="companyEmail" required />
+      </div>
 
-        <div class="mb-3">
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" name="companyPassword" required>
-        </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="password" name="companyPassword" required />
+      </div>
 
-        <button id="createCompanyAccount" type="submit" class="btn btn-primary"> <i class="bi bi-person-fill-add"></i> Create Account </button>
+      <button id="createCompanyAccount" type="submit" class="btn btn-primary"><i class="bi bi-person-fill-add"></i> Create Account</button>
     </form>
 
-    <br>
+    <br />
 
     <div>
-        <h5>Already have an account? </h5>
-        <a href="{{ url_for('go2LogInPage') }}" class="btn btn-success">
-            <i class="bi bi-box-arrow-in-right"></i> Log in here </a>
+      <h5>Already have an account?</h5>
+      <a href="{{ url_for('go2LogInPage') }}" class="btn btn-success"><i class="bi bi-box-arrow-in-right"></i> Log in here</a>
     </div>
 
-    <br>
+    <br />
 
     <div>
-        <a href="{{ url_for('index') }}" class="btn btn-success">
-            <i class="bi bi-house-door"></i> Back to Map
-        </a>
+      <a href="{{ url_for('index') }}" class="btn btn-success"><i class="bi bi-house-door"></i> Back to Map</a>
     </div>
 
+    <!-- bootstrap link for js: -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 
-    <!--bootstrap link for js:-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-        crossorigin="anonymous"></script>
-
-</body>
-
-<footer>
-    <div id="websiteCreation">
-        <br>
-        <span>Kirkland, WA © 2025 My Food Truck Tracker </span>
-        <br>
-        <br>
-        <span>Created by Carmen Albiter </span>
-        <br>
-    </div>
-
-</footer>
-
+    <footer>
+      <div id="websiteCreation">
+        <br />
+        <span>Kirkland, WA © 2025 My Food Truck Tracker</span>
+        <br />
+        <br />
+        <span>Created by Carmen Albiter</span>
+        <br />
+      </div>
+    </footer>
+    
+  </body>
 </html>

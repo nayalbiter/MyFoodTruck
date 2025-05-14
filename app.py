@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for, session
+from flask import Flask, redirect, render_template, request, url_for
 from flask_login import LoginManager, login_required, logout_user, current_user
 from utils.createCompanyForm import createCompany
 from utils.addNewFoodTruckForm import insertNewFoodTruck
@@ -9,7 +9,7 @@ from utils.userModelForAuthentication import User
 
 app = Flask(__name__)
 
-#Authentication for the companies to register and log in ------------------------------------------!!!!!!!!!!!!!!!!!!!!!
+#Authentication for the companies to register and log in 
 app.config["SECRET_KEY"] = "key1Used.For9Authentication,Is!Hard#Coded*For%Testing&Purposes0"
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -54,16 +54,15 @@ def go2CompanyMainPageAfterLogIn():
     return render_template("foodCompanyPage.html", company = current_user )
 
 
-
-#show the food truck form   
+#show the food truck form  fixing this part now -----------------------------!!! 
 @app.route('/go2FoodTruckForm')
+@login_required
 def go2FoodTruckForm():
-    company_id = request.args.get("company_id")
-    print(company_id)
-    return render_template("addNewFoodTruckForm.html", company_id=company_id)
+    return render_template("addNewFoodTruckForm.html", company_id=current_user.id)
 
 #add a new food truck to the database
 @app.route('/addNewFoodTruck', methods=['POST'])
+@login_required
 def addNewFoodTruck():
     return insertNewFoodTruck()
 

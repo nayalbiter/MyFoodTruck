@@ -9,6 +9,8 @@ def insertNewFoodTruck():
     phone_number = request.form['phone']
     business_hours = request.form['hours']
     
+    print(f"company_id: {company_id}")
+    
     
     insertFoodTruckQuery = """
     INSERT INTO food_trucks (food_truck_name, full_address, phone_number, business_hours, company_id )
