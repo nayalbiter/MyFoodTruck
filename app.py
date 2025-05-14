@@ -24,7 +24,7 @@ def load_company(company_id):
 # Home page
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", loggedInCompany = current_user.is_authenticated)
 
 #get the food trucks from the database
 @app.route('/fetchFoodTrucks')

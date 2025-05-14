@@ -16,20 +16,34 @@
       <h2 id="phrase">Find the best food trucks near you in Washington State!</h2>
 
       <div>
-        <button id="registerButton">Register your food truck here <i class="bi bi-truck"></i></button>
-        <button id="logInButton"><i class="bi bi-box-arrow-in-right"></i> Log in for food trucks owners</button>
+        {% if loggedInCompany %}
+          <div class="mt-3">
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary me-2"><i class="bi bi-box-arrow-right"></i> Log Out</a>
+            <a href="{{ url_for('go2CompanyMainPageAfterLogIn') }}" class="btn btn-primary"><i class="bi bi-building"></i> Go Back</a>
+          </div>
+        {% else %}
+          <div>
+            <button id="registerButton">Register your food truck here <i class="bi bi-truck"></i></button>
+            <button id="logInButton"><i class="bi bi-box-arrow-in-right"></i> Log in for food trucks owners</button>
+          </div>
+
+          <br />
+
+          <div>
+            <button id="searchButton"><i class="bi bi-search"></i> Search a food truck</button> <!-- To do -->
+          </div>
+
+          <br />
+
+          <div>
+            <button id="startButton"><i class="bi bi-play-fill"></i> Click here to start</button> <!-- To do -->
+          </div> <!-- Fix this -->
+
+          <br />
+        {% endif %}
       </div>
-      <br />
-
-      <div>
-        <button id="searchButton"><i class="bi bi-search"></i> Search a food truck</button> <!-- To do -->
-      </div>
 
       <br />
-
-      <div>
-        <button id="startButton"><i class="bi bi-play-fill"></i> Click here to start</button> <!-- To do -->
-      </div> <!-- Fix this -->
       <br />
 
       <div id="map">
@@ -59,6 +73,5 @@
         <span><i class="bi bi-person-circle"></i> Created by Vector Bazar - Flaticon</span>
       </div>
     </footer>
-    
   </body>
 </html>
