@@ -51,7 +51,7 @@ def go2LogInPage():
 def logInCompany ():
     return logInForCompany()
 
-#company main page route
+#company main page route      -------------------------FIX THE BUTTONS HERE---!!!
 @app.route('/foodTruckCompanyMainPage')
 @login_required
 def go2CompanyMainPageAfterLogIn():

@@ -37,8 +37,12 @@
         <input type="text" class="form-control" id="hours" name="hours" placeholder="e.g. Mon–Fri: 9am–5pm" required />
       </div>
 
-      <button type="submit" class="btn btn-primary">Cancel</button> <!-- To do -->
-      <button type="submit" class="btn btn-primary">Create <i class="bi bi-truck"></i></button>
+      <div>
+        <a href="{{ url_for('go2CompanyMainPageAfterLogIn') }}" class="btn btn-secondary me-2"><i class="bi bi-x-circle"></i> Cancel</a>
+
+        <button type="submit" class="btn btn-primary">Create <i class="bi bi-truck"></i></button>
+        
+      </div>
     </form>
 
     <!-- bootstrap link for js: -->
@@ -54,6 +58,5 @@
         <br />
       </div>
     </footer>
-    
   </body>
 </html>
