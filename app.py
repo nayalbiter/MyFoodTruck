@@ -51,7 +51,7 @@ def go2LogInPage():
 def logInCompany ():
     return logInForCompany()
 
-#company main page route      -------------------------FIX THE BUTTONS HERE---!!!
+#company main page route
 @app.route('/foodTruckCompanyMainPage')
 @login_required
 def go2CompanyMainPageAfterLogIn():
@@ -68,6 +68,15 @@ def go2FoodTruckForm():
 @login_required
 def addNewFoodTruck():
     return insertNewFoodTruck()
+
+#route to delete a company account --> toDo and edit the foodCompanyPage.html
+
+#route to edit the company information --> toDo
+
+#route to edit a particular food truck --> toDo
+
+#route to delete a particular food truck --> toDo
+
 
 #log out route
 @app.route("/logout")
