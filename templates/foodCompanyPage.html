@@ -71,8 +71,9 @@
                     <a href="" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i> Edit <!-- To do --></a>
                   </td>
                   <td style="width: 300px;">
-                    <form action="" method="" class="d-inline">
-                      <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete <!-- To do --></button>
+                    <form action="/deleteFoodTruck" method="POST" class="d-inline">
+                      <input type="hidden" name="food_truck_id" value="{{ truck.food_truck_id }}" />
+                      <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</button>
                     </form>
                   </td>
                 </tr>
@@ -104,6 +105,5 @@
         <br />
       </div>
     </footer>
-    
   </body>
 </html>

@@ -5,6 +5,7 @@ from utils.addNewFoodTruckForm import insertNewFoodTruck
 from utils.getFoodTrucksFromDataBase import getFoodTrucksFromDB
 from utils.logInFunction import logInForCompany
 from utils.showCompanyMainPage import getCompanyMainPage
+from utils.deleteFoodTruckFunction import deleteFoodTruck
 from utils.userModelForAuthentication import User
 
 
@@ -76,7 +77,10 @@ def addNewFoodTruck():
 #route to edit a particular food truck --> toDo
 
 #route to delete a particular food truck --> toDo
-
+@app.route('/deleteFoodTruck', methods = ['POST'])
+@login_required
+def deleteAFoodTruck():
+    return deleteFoodTruck()
 
 #log out route
 @app.route("/logout")
