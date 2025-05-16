@@ -76,7 +76,7 @@ def addNewFoodTruck():
 
 #route to edit a particular food truck --> toDo
 
-#route to delete a particular food truck --> toDo
+#route to delete a particular food truck
 @app.route('/deleteFoodTruck', methods = ['POST'])
 @login_required
 def deleteAFoodTruck():
