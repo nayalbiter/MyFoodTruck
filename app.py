@@ -6,6 +6,7 @@ from utils.getFoodTrucksFromDataBase import getFoodTrucksFromDB
 from utils.logInFunction import logInForCompany
 from utils.showCompanyMainPage import getCompanyMainPage
 from utils.deleteFoodTruckFunction import deleteFoodTruck
+from utils.deleteACompanyFunction import deleteCompany
 from utils.userModelForAuthentication import User
 
 
@@ -70,7 +71,11 @@ def go2FoodTruckForm():
 def addNewFoodTruck():
     return insertNewFoodTruck()
 
-#route to delete a company account --> toDo and edit the foodCompanyPage.html
+#route to delete a company account --> toDo fix the flash messages in both deletes routes
+@app.route('/deleteFoodCompany', methods = ['POST'])
+@login_required
+def deleteFoodTruckCompany():
+    return deleteCompany()
 
 #route to edit the company information --> toDo
 

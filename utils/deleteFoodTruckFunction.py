@@ -10,7 +10,7 @@ def deleteFoodTruck():
     print(f"this is the food truck id : {food_truck_id}")
     
     if not food_truck_id:
-        flash(f"this food truck does not exist", Warning)
+        #flash(f"This food truck does not exist", "warning")
         return redirect(url_for("go2CompanyMainPageAfterLogIn"))
     
     company_id = current_user.id
@@ -25,7 +25,7 @@ def deleteFoodTruck():
     
     except mysql.connector.Error as err:
         print(f"Database error: {err}")
-        flash(f"An error occurred while deleting this food truck: {err}", "danger")
+        #flash(f"An error occurred while deleting this food truck: {err}", "danger")
     
     finally:
         cursor.close()
