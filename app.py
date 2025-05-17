@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, url_for
 from flask_login import LoginManager, login_required, logout_user, current_user
 from utils.createCompanyForm import createCompany
 from utils.addNewFoodTruckForm import insertNewFoodTruck
@@ -32,6 +32,10 @@ def index():
 @app.route('/fetchFoodTrucks')
 def getFoodTrucks():
     return getFoodTrucksFromDB()
+
+#route for the geolocation
+
+#route for the search
 
 # Register Food Truck company
 @app.route('/registerFoodCompany')
@@ -71,7 +75,7 @@ def go2FoodTruckForm():
 def addNewFoodTruck():
     return insertNewFoodTruck()
 
-#route to delete a company account --> toDo fix the flash messages in both deletes routes
+#route to delete a company account --> toDo add bootstrap modals or flash messages in both deletes routes
 @app.route('/deleteFoodCompany', methods = ['POST'])
 @login_required
 def deleteFoodTruckCompany():
@@ -81,7 +85,7 @@ def deleteFoodTruckCompany():
 
 #route to edit a particular food truck --> toDo
 
-#route to delete a particular food truck
+#route to delete a particular food truck   --> toDo add bootstrap modals or flash messages in both deletes routes
 @app.route('/deleteFoodTruck', methods = ['POST'])
 @login_required
 def deleteAFoodTruck():

@@ -44,7 +44,7 @@ def createCompany():
             return render_template("registerFTCompanyForm.html")
         else:
             print(f"Database error: {err}")
-            return f"An error happened while processing your request: {err}"  # error en el servidor
+            return f"An error happened while processing your request: {err}"
     
     finally:
         cursor.close()

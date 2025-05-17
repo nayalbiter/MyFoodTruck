@@ -1,4 +1,4 @@
-from flask import flash, redirect, request, url_for
+from flask import redirect, request, url_for
 from flask_login import current_user, logout_user
 from utils.databaseInfo import connectToDatabase
 import mysql.connector
@@ -9,8 +9,7 @@ def deleteCompany():
     print(f"this is the company_id : {company_id}")
     
     if not company_id or int(company_id) != current_user.id:
-        print("there is not company id, not working")
-        #flash("You are not allowed to delete this account.", "danger")
+        print("Something is wrong. You are not allowed to delete this account")
         logout_user()
         return redirect(url_for("index"))
     
@@ -22,14 +21,12 @@ def deleteCompany():
         cursor.execute(deleteFoodCompanyQuery, (current_user.id,))
         dataBase.commit()
         logout_user()
-        print("the company was deleted successfully")
-        #flash("Your company and its food trucks have been deleted.", "success")
+        print("Your company and its food trucks have been deleted successfully")
         return redirect(url_for('index'))
         
-    
     except mysql.connector.Error as err:
         print(f"Database error: {err}")
-        #flash(f"An error occurred while deleting this food company: {err}", "danger")
+        print(f"An error occurred while deleting this food company: {err}")
         return redirect(url_for('go2CompanyMainPageAfterLogIn'))
     
     finally:
