@@ -10,11 +10,10 @@ foodTruckIcon.style.height = "40px";
 
 let mapForFT;
 let geocoder;
+let infoWindow;
 
 // Create a map
 async function initMap() {
-
-    let userLocation = { lat: 47.67731658055798, lng: -122.12261041757242 };
 
     const mapLibrary = await google.maps.importLibrary("maps");
     const Map = mapLibrary.Map;
@@ -25,17 +24,59 @@ async function initMap() {
     geocoder = new google.maps.Geocoder();
 
     mapForFT = new Map(document.getElementById("map"), {
-        zoom: 12,
-        center: userLocation,
+        zoom: 11,
+        center: { lat: 47.61590931698481, lng: -122.20371027492875 },  //Bellevue Square is at the center of the map
         mapId: "679343f29f0f9fcf"
     });
 
-    userMarker = new AdvancedMarkerElement({
-        map: mapForFT,
-        position: userLocation,
-        title: "My location",
-        content: userLocationIcon
+    //code for the geolocation
+    infoWindow = new google.maps.InfoWindow();
+
+    let startButton = document.getElementById("startButton");
+
+    startButton.addEventListener("click", () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const userLocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+
+                infoWindow.setPosition(userLocation);
+                infoWindow.setContent("You are in this area!");
+                infoWindow.open(mapForFT);
+                mapForFT.setCenter(userLocation);
+
+                userMarker = new AdvancedMarkerElement({
+                    map: mapForFT,
+                    position: userLocation,
+                    title: "My location",
+                    content: userLocationIcon
+                });
+            },
+                () => {
+                    handleLocationError(true, infoWindow, mapForFT.getCenter());
+                },
+            );
+        }
+        else {
+            handleLocationError(false, infoWindow, mapForFT.getCenter());
+        }
     });
+}
+
+//function to handle errors in the geolocation
+function handleLocationError(browserHasGeolocation, infoWindow, userLocation) {
+    infoWindow.setPosition(userLocation);
+
+    let message;
+
+    if (browserHasGeolocation) {
+        message = "The Geolocation service failed, please try again!"
+    } else {
+        message = "Sorry, your browser does not support geolocation to find your location, check the food trucks in the map manually"
+    }
+    infoWindow.setContent(message)
 }
 
 // Geocoding function
@@ -75,7 +116,6 @@ function fetchFoodTrucks() {
             return response.json();
         })
         .then(foodTrucksList => {
-            //console.log("hahaha si funciona");
             foodTrucksList.forEach(truck => {
                 geoCodingAddress(truck.food_truck_name, truck.full_address);
                 console.log(truck.food_truck_name);

@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS Food_Trucks_Database;
 create database Food_Trucks_Database;
 use Food_Trucks_Database;
+
 /* company table */ 
 create table food_companies (
 	company_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -23,6 +24,7 @@ CREATE TABLE food_trucks (
 
 select * from food_companies;
 select * from food_trucks;
+
 
 
 
