@@ -64,7 +64,10 @@
       </div>
 
       <div>
-        <button id="editCompanyInfo">Edit Company Information</button> <!-- To do -->
+        <form action="/editCompanyInfo" method="POST" class="d-inline">
+          <input type="hidden" name="company_id" value="{{ company.id }}" />
+          <button type="submit" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i>Edit Company Information</button>
+        </form>
       </div>
 
       <br />

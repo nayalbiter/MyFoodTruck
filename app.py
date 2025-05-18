@@ -77,13 +77,14 @@ def go2FoodTruckForm():
 def addNewFoodTruck():
     return insertNewFoodTruck()
 
-#route to delete a company account       --> toDo add bootstrap modals or flash messages here!
+#route to delete a company account    ---> toDo add bootstrap modals or flash messages here!
 @app.route('/deleteFoodCompany', methods = ['POST'])
 @login_required
 def deleteFoodTruckCompany():
     return deleteCompany()
 
-#route to edit the company information --> toDo
+#route to edit the company information --> toDo ------------------------------> I am working here!!!!
+
 
 #route to edit a particular food truck 
 @app.route ('/editFoodTruckInfo', methods = ['POST'])
@@ -91,13 +92,13 @@ def deleteFoodTruckCompany():
 def editFoodTruck():
     return editFoodTruckDetails()
 
-#route to update the food truck info in the database ------------------------------> I am working here!!!!
+#route to update the food truck info in the database 
 @app.route ('/updateFoodTruckInfo', methods = ['POST'])
 @login_required
 def updateFoodTruck():
     return updateTruckInfo()
 
-#route to delete a particular food truck     --> toDo add bootstrap modals or flash messages here!
+#route to delete a particular food truck   ---> toDo add bootstrap modals or flash messages here!
 @app.route('/deleteFoodTruck', methods = ['POST'])
 @login_required
 def deleteAFoodTruck():
