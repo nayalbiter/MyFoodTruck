@@ -10,6 +10,7 @@ from utils.deleteACompanyFunction import deleteCompany
 from utils.editFoodTruckFunction import editFoodTruckDetails
 from utils.updateFoodTruckFunction import updateTruckInfo
 from utils.editCompanyFunction import editCompanyDetails
+from utils.updateCompanyInfoFunction import updateCompanyInfo
 from utils.userModelForAuthentication import User
 
 
@@ -36,7 +37,7 @@ def index():
 def getFoodTrucks():
     return getFoodTrucksFromDB()
 
-#route for the geolocation
+#route for the geolocation ------------------------------> I am working here!!!!
 
 #route for the search
 
@@ -84,12 +85,17 @@ def addNewFoodTruck():
 def deleteFoodTruckCompany():
     return deleteCompany()
 
-#route to edit the company information ------------------------------> I am working here!!!!
+#route to edit the company information 
 @app.route('/editCompanyInfo', methods = ['POST'])
 @login_required
 def editCompany():
     return editCompanyDetails()
 
+#route to update the company info in the database   ---> toDo add bootstrap modals or flash messages here!
+@app.route('/updateCompanyInformation', methods=['POST'])
+@login_required
+def updateCompany():
+    return updateCompanyInfo()
 
 #route to edit a particular food truck 
 @app.route ('/editFoodTruckInfo', methods = ['POST'])
