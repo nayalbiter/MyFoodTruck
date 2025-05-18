@@ -8,6 +8,7 @@ from utils.showCompanyMainPage import getCompanyMainPage
 from utils.deleteFoodTruckFunction import deleteFoodTruck
 from utils.deleteACompanyFunction import deleteCompany
 from utils.editFoodTruckFunction import editFoodTruckDetails
+from utils.updateFoodTruckFunction import updateTruckInfo
 from utils.userModelForAuthentication import User
 
 
@@ -76,7 +77,7 @@ def go2FoodTruckForm():
 def addNewFoodTruck():
     return insertNewFoodTruck()
 
-#route to delete a company account       --> toDo add bootstrap modals or flash messages in both deletes routes
+#route to delete a company account       --> toDo add bootstrap modals or flash messages here!
 @app.route('/deleteFoodCompany', methods = ['POST'])
 @login_required
 def deleteFoodTruckCompany():
@@ -84,13 +85,19 @@ def deleteFoodTruckCompany():
 
 #route to edit the company information --> toDo
 
-#route to edit a particular food truck ------------------------------> I am working here!!!!
+#route to edit a particular food truck 
 @app.route ('/editFoodTruckInfo', methods = ['POST'])
+@login_required
 def editFoodTruck():
     return editFoodTruckDetails()
 
+#route to update the food truck info in the database ------------------------------> I am working here!!!!
+@app.route ('/updateFoodTruckInfo', methods = ['POST'])
+@login_required
+def updateFoodTruck():
+    return updateTruckInfo()
 
-#route to delete a particular food truck     --> toDo add bootstrap modals or flash messages in both deletes routes
+#route to delete a particular food truck     --> toDo add bootstrap modals or flash messages here!
 @app.route('/deleteFoodTruck', methods = ['POST'])
 @login_required
 def deleteAFoodTruck():
