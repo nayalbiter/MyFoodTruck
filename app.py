@@ -7,6 +7,7 @@ from utils.logInFunction import logInForCompany
 from utils.showCompanyMainPage import getCompanyMainPage
 from utils.deleteFoodTruckFunction import deleteFoodTruck
 from utils.deleteACompanyFunction import deleteCompany
+from utils.editFoodTruckFunction import editFoodTruckDetails
 from utils.userModelForAuthentication import User
 
 
@@ -69,13 +70,13 @@ def go2CompanyMainPageAfterLogIn():
 def go2FoodTruckForm():
     return render_template("addNewFoodTruckForm.html", company_id=current_user.id)
 
-#add a new food truck to the database
+#add a new food truck to the database  
 @app.route('/addNewFoodTruck', methods=['POST'])
 @login_required
 def addNewFoodTruck():
     return insertNewFoodTruck()
 
-#route to delete a company account --> toDo add bootstrap modals or flash messages in both deletes routes
+#route to delete a company account       --> toDo add bootstrap modals or flash messages in both deletes routes
 @app.route('/deleteFoodCompany', methods = ['POST'])
 @login_required
 def deleteFoodTruckCompany():
@@ -83,16 +84,20 @@ def deleteFoodTruckCompany():
 
 #route to edit the company information --> toDo
 
-#route to edit a particular food truck --> toDo
+#route to edit a particular food truck ------------------------------> I am working here!!!!
+@app.route ('/editFoodTruckInfo', methods = ['POST'])
+def editFoodTruck():
+    return editFoodTruckDetails()
 
-#route to delete a particular food truck   --> toDo add bootstrap modals or flash messages in both deletes routes
+
+#route to delete a particular food truck     --> toDo add bootstrap modals or flash messages in both deletes routes
 @app.route('/deleteFoodTruck', methods = ['POST'])
 @login_required
 def deleteAFoodTruck():
     return deleteFoodTruck()
 
 #log out route
-@app.route("/logout")
+@app.route("/logout", methods = ['POST'])
 @login_required
 def logout():
     print("Logging out:", current_user.company_email)
