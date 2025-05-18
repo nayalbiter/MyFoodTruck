@@ -12,41 +12,36 @@
   </head>
 
   <body>
-    <h1 id="title">Log in here:</h1>
-
     {% if error %}
       <div class="alert alert-danger" role="alert">{{ error }}</div>
     {% endif %}
 
-    <form action="/logInCompany" method="POST">
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address:</label>
-        <input type="email" class="form-control" id="email" name="companyEmail" required />
-      </div>
+    <div class="d-flex justify-content-center gap-3 mt-4">
+      <a href="{{ url_for('index') }}" class="btn btn-info btn-lg align-items-center gap-2 text-black"><i class="bi bi-house-door"></i> Back to Map</a>
+    </div>
 
-      <div class="mb-3">
-        <label for="password" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="password" name="companyPassword" required />
-      </div>
+    <div class="d-flex justify-content-center mt-5">
+      <form action="/logInCompany" method="POST" class="w-100" style="max-width: 500px;">
+        <h1 id="title" class="text-center mb-4">Log in here:</h1>
 
-      <button id="logIn" type="submit" class="btn btn-primary"><i class="bi bi-box-arrow-in-right"></i> Log In</button>
-    </form>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address:</label>
+          <input type="email" class="form-control" id="email" name="companyEmail" required />
+        </div>
 
-    <br />
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input type="password" class="form-control" id="password" name="companyPassword" required />
+        </div>
 
-    <div>
+        <button id="logIn" type="submit" class="btn btn-primary btn-lg align-items-center gap-2"><i class="bi bi-box-arrow-in-right"></i> Log In</button>
+      </form>
+    </div>
+
+    <div class="text-center mt-4">
       <h5>Do not have an account?</h5>
-      <a href="{{ url_for('go2RegisterCompany') }}" class="btn btn-success"><i class="bi bi-person-fill-add"></i> Register here</a>
+      <a href="{{ url_for('go2RegisterCompany') }}" class="btn btn-success btn-lg align-items-center gap-2"><i class="bi bi-person-fill-add"></i> Register here</a>
     </div>
-
-    <br />
-
-    <div>
-      <a href="{{ url_for('index') }}" class="btn btn-info"><i class="bi bi-house-door"></i> Back to Map</a>
-    </div>
-
-    <!-- bootstrap link for js: -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 
     <footer>
       <div id="websiteCreation">
@@ -58,6 +53,8 @@
         <br />
       </div>
     </footer>
-    
+
+    <!-- bootstrap link for js: -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   </body>
 </html>
