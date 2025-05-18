@@ -9,6 +9,7 @@ from utils.deleteFoodTruckFunction import deleteFoodTruck
 from utils.deleteACompanyFunction import deleteCompany
 from utils.editFoodTruckFunction import editFoodTruckDetails
 from utils.updateFoodTruckFunction import updateTruckInfo
+from utils.editCompanyFunction import editCompanyDetails
 from utils.userModelForAuthentication import User
 
 
@@ -83,7 +84,11 @@ def addNewFoodTruck():
 def deleteFoodTruckCompany():
     return deleteCompany()
 
-#route to edit the company information --> toDo ------------------------------> I am working here!!!!
+#route to edit the company information ------------------------------> I am working here!!!!
+@app.route('/editCompanyInfo', methods = ['POST'])
+@login_required
+def editCompany():
+    return editCompanyDetails()
 
 
 #route to edit a particular food truck 

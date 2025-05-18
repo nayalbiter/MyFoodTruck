@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Food Truck Company</title>
+
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <!-- bootstrap link: -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <h2>Edit Company Information</h2>
+
+    <form action="/updateCompanyInformation" method="post">
+      <input type="hidden" name="company_id" value="{{ company.id }}" />
+
+      <div class="mb-3">
+        <label for="foodDescription" class="form-label">Food description:</label>
+        <input type="text" class="form-control" id="foodDescription" name="foodTruckDescription" value="{{ company.food_description }}" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="websiteLink" class="form-label">Company website:</label>
+        <input type="url" class="form-control" id="websiteLink" name="foodTruckWebsite" value="{{ company.business_website }}" />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">New Password (leave blank to keep current one):</label>
+        <input type="password" class="form-control" id="password" name="companyPassword" />
+      </div>
+
+      <div>
+        <a href="{{ url_for('go2CompanyMainPageAfterLogIn') }}" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+
+        <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Save Changes</button>
+      </div>
+    </form>
+
+    <br />
+
+    <!-- bootstrap link for js: -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+    <footer>
+      <div id="websiteCreation">
+        <br />
+        <span>Kirkland, WA © 2025 My Food Truck Tracker</span>
+        <br />
+        <br />
+        <span>Created by Carmen Albiter</span>
+        <br />
+      </div>
+    </footer>
+  </body>
+</html>

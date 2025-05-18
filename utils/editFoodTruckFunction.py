@@ -17,7 +17,5 @@ def editFoodTruckDetails():
         print("this food truck does not exist")
         return redirect(url_for("go2CompanyMainPageAfterLogIn"))
     
-    print(truckInfo)
-    
     return render_template("editFoodTruckDetails.html", truck = truckInfo)
     
