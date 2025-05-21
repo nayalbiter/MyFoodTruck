@@ -37,10 +37,6 @@ def index():
 def getFoodTrucks():
     return getFoodTrucksFromDB()
 
-#route for the geolocation ------------------------------> I am working here!!!!
-
-#route for the search
-
 # Register Food Truck company
 @app.route('/registerFoodCompany')
 def go2RegisterCompany():
