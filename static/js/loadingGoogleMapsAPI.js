@@ -17,7 +17,7 @@ https://developers.google.com/maps/documentation/javascript/add-google-map
     d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
 })
     ({
-        key: "AIzaSyAOacv_xm8875Kv69dQpWanhvZfzz7dgXA",
+        key: "I had to remove my key since my repository is public now",
         v: "weekly",
 
     });
